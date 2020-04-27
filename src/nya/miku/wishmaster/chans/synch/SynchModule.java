@@ -80,7 +80,7 @@ public class SynchModule extends AbstractVichanModule {
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "old", "Чулан", "Остальные", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "test", "Старая школа", "Остальные", false),
     };
-    private static final String[] BOARDS_WITH_CAPTCHA = new String[] { "b" };
+    private static final String[] BOARDS_WITH_CAPTCHA = new String[] {};
     private static final String[] ATTACHMENT_FORMATS = new String[] {
         "jpg", "png", "bmp", "svg", "swf", "mp3", "m4a", "flac", "zip", "rar", "tar", "gz", "txt", "pdf", "torrent", "webm"
     };
@@ -116,6 +116,11 @@ public class SynchModule extends AbstractVichanModule {
     @Override
     protected String[] getAllDomains() {
         return DOMAINS;
+    }
+    
+    @Override
+    protected boolean canCloudflare() {
+        return true;
     }
     
     @Override
@@ -182,7 +187,7 @@ public class SynchModule extends AbstractVichanModule {
     
     @Override
     public String fixRelativeUrl(String url) {
-        if (url.startsWith("/src/") | url.startsWith("/thumb/")) return "http://cdn.syn-ch.com" + url;
+        if (url.startsWith("/src/") | url.startsWith("/thumb/")) return (useHttps() ? "https://" : "http://") + "cdn." + getUsingDomain() + url;
         return super.fixRelativeUrl(url);
     }
 

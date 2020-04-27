@@ -22,5 +22,5 @@ import nya.miku.wishmaster.BuildConfig;
 
 public class ACRAConstants {
     public static final boolean ACRA_ENABLED = !BuildConfig.DEBUG;
-    public static final String ACRA_EMAIL = "";
+    public static final String ACRA_EMAIL = "overchan-project@yandex.com";
 }

@@ -25,12 +25,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.text.ParsePosition;
-import java.net.URI;
 
 import nya.miku.wishmaster.api.interfaces.CancellableTask;
 import nya.miku.wishmaster.api.interfaces.ProgressListener;
@@ -53,7 +47,6 @@ import cz.msebera.android.httpclient.client.config.RequestConfig;
 import cz.msebera.android.httpclient.client.methods.HttpUriRequest;
 import cz.msebera.android.httpclient.client.methods.RequestBuilder;
 import cz.msebera.android.httpclient.message.BasicHeader;
-import cz.msebera.android.httpclient.impl.cookie.BasicClientCookie;
 
 /**
  * Выполнение HTTP запросов.
@@ -220,42 +213,6 @@ public class HttpStreamer {
             Header header = response.getFirstHeader(HttpHeaders.LOCATION);
             if (header != null) responseModel.locationHeader = header.getValue();
             responseModel.headers = response.getAllHeaders();
-            //обработка печенек (cookies) - временное решение проблемы с куками
-            //из-за того, что в HttpClient 4.4 куки не обрабатываются корректно, сохраняем их вручную
-            for (Header h : responseModel.headers) {
-                if (!h.getName().toLowerCase().equals("set-cookie"))
-                    continue;
-                Matcher matcher = Pattern.compile("([^= ]+)=\"?([^;]*)\"?[;$]").matcher(h.getValue());
-                if (!matcher.find())
-                    continue;
-                URI parsedUri = new URI(url);
-                String name = matcher.group(1);
-                String value = matcher.group(2);
-                String path = parsedUri.getPath();
-                String domain = parsedUri.getHost();
-                Date expires = null;
-                while (matcher.find()) {
-                    if (matcher.group(1).toLowerCase().equals("path")) {
-                        path = matcher.group(2);
-                    } else if (matcher.group(1).toLowerCase().equals("domain")) {
-                        domain = matcher.group(2);
-                    } else if (matcher.group(1).toLowerCase().equals("expires")) {
-                        SimpleDateFormat dfmt1 = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
-                        SimpleDateFormat dfmt2 = new SimpleDateFormat("EEE, dd-MMM-yyyy HH:mm:ss z");
-                        SimpleDateFormat dfmt3 = new SimpleDateFormat("EEE MMM dd HH:mm:ss yyyy");
-                        ParsePosition pos = new ParsePosition(0);
-                        if (((expires = dfmt1.parse(matcher.group(2), pos)) == null) &&
-                            ((expires = dfmt2.parse(matcher.group(2), pos)) == null) &&
-                            ((expires = dfmt3.parse(matcher.group(2), pos)) == null));
-                    }
-                }
-                BasicClientCookie cookie = new BasicClientCookie(name, value);
-                cookie.setDomain(domain);
-                cookie.setPath(path);
-                if (expires != null)
-                    cookie.setExpiryDate(expires);
-                ((ExtendedHttpClient)httpClient).getCookieStore().addCookie(cookie);
-            }
             //поток
             HttpEntity responseEntity = response.getEntity();
             if (responseEntity != null) {
