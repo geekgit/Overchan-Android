@@ -37,53 +37,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
     <string name="catalog_default">Каталог</string>
     
-    <string name="postitem_contentdescription_thumbnail_image">Превью</string>
-    <string name="postitem_contentdescription_badge_icon">Значок</string>
+    <string name="postitem_contentdescription_thumbnail_image">Thumbnail</string>
+    <string name="postitem_contentdescription_badge_icon">Icon</string>
     <string name="postitem_op_mark">#OP</string>
     <string name="postitem_sage_mark">SAGE</string>
-    <string name="postitem_attachment_size_kb_format">%d КБ</string>
-    <string name="postitem_attachment_size_mb_format">%.1f МБ</string>
-    <string name="postitem_show_full_text"><u>Показать полный текст</u></string>
+    <string name="postitem_attachment_size_kb_format">%d KB</string>
+    <string name="postitem_attachment_size_mb_format">%.1f MB</string>
+    <string name="postitem_show_full_text"><u>Show the full text</u></string>
     <string name="postitem_gif">gif</string>
-    <string name="postitem_video">видео</string>
-    <string name="postitem_audio">аудио</string>
-    <string name="postitem_file">файл</string>
-    <string name="postitem_link">ссылка</string>
-    <string name="postitem_replies">Ответы: </string>
-    <string name="postitem_hidden_thread">Скрытый тред #%1$s: %2$s</string>
-    <string name="postitem_hidden_post">Скрытое сообщение #%1$s: %2$s</string>
-    <string name="postitem_post_number_search_header">%1$s (тред %2$s)</string>
-    <string name="postitem_sticky_thread">Тред закреплен</string>
-    <string name="postitem_closed_thread">Обсуждение закрыто</string>
-    <string name="postitem_cyclical_thread">Цикличный тред</string>
-    <string name="postitem_deleted_mark">Сообщение удалено</string>
+    <string name="postitem_video">video</string>
+    <string name="postitem_audio">audio</string>
+    <string name="postitem_file">file</string>
+    <string name="postitem_link">link</string>
+    <string name="postitem_replies">Replies: </string>
+    <string name="postitem_hidden_thread">Hidden thread #%1$s: %2$s</string>
+    <string name="postitem_hidden_post">Hidden post #%1$s: %2$s</string>
+    <string name="postitem_post_number_search_header">%1$s (thread %2$s)</string>
+    <string name="postitem_sticky_thread">Thread is sticky</string>
+    <string name="postitem_closed_thread">Thread is closed</string>
+    <string name="postitem_cyclical_thread">Cyclical thread</string>
+    <string name="postitem_deleted_mark">Post is deleted</string>
     <plurals name="postitem_posts_quantity">
-        <item quantity="one">%d сообщение</item>
-        <item quantity="many">%d сообщений</item>
-        <item quantity="other">%d сообщения</item>
+        <item quantity="one">%d post</item>
+        <item quantity="other">%d posts</item>
     </plurals>
     <plurals name="postitem_files_quantity">
-        <item quantity="one">%d файл</item>
-        <item quantity="many">%d файлов</item>
-        <item quantity="other">%d файла</item>
+        <item quantity="one">%d file</item>
+        <item quantity="other">%d files</item>
     </plurals>
     <plurals name="postitem_replies_quantity">
-        <item quantity="one">%d ответ</item>
-        <item quantity="many">%d ответов</item>
-        <item quantity="other">%d ответа</item>
+        <item quantity="one">%d reply</item>
+        <item quantity="other">%d replies</item>
     </plurals>
     
-    <string name="postslist_list_updated">Обновлено</string>
-    <string name="postslist_no_new_posts">Нет новых сообщений</string>
+    <string name="postslist_list_updated">Updated</string>
+    <string name="postslist_no_new_posts">No new posts</string>
     <plurals name="postslist_new_posts_quantity">
-        <item quantity="one">%d новое сообщение</item>
-        <item quantity="many">%d новых сообщений</item>
-        <item quantity="other">%d новых сообщения</item>
+        <item quantity="one">%d new post</item>
+        <item quantity="other">%d new posts</item>
     </plurals>
     
-    <string name="attachment_info_size_format">Размер: %s</string>
-    <string name="attachment_info_resolution_format">Разрешение: %1$dx%2$d</string>
-    <string name="attachment_info_original_name_format">Оригинальное имя: %s</string>
+    <string name="attachment_info_size_format">Size: %s</string>
+    <string name="attachment_info_resolution_format">Resolution: %1$dx%2$d</string>
+    <string name="attachment_info_original_name_format">Original name: %s</string>
     
     <string name="tabs_newtab">Новая вкладка</string>
     <string name="tabs_favorites">Избранное</string>
